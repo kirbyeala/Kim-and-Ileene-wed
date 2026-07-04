@@ -1,0 +1,4 @@
+import Greeting from '../models/Greeting.js'
+export async function listGreetings(req,res,next){try{res.json({greetings:await Greeting.find({approved:true}).sort({createdAt:-1}).limit(100)})}catch(e){next(e)}}
+export async function createGreeting(req,res,next){try{const message=req.body.message?.trim();if(!message)return res.status(400).json({message:'A greeting is required.'});const greeting=await Greeting.create({guestName:req.body.guestName?.trim()||'A cherished guest',message});req.app.get('io').emit('greeting:new',greeting);res.status(201).json({greeting})}catch(e){next(e)}}
+export async function removeGreeting(req,res,next){try{const greeting=await Greeting.findByIdAndDelete(req.params.id);if(!greeting)return res.sendStatus(404);req.app.get('io').emit('greeting:deleted',greeting.id);res.sendStatus(204)}catch(e){next(e)}}
