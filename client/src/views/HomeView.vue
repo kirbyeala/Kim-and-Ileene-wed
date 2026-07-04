@@ -30,7 +30,7 @@ import CountdownTimer from '../components/CountdownTimer.vue'
     </section>
   <section class="memory-cta section">
     <p class="script">Through your eyes</p><h2>Capture the joy.<br>Share the love.</h2>
-    <p>No account, no fuss. Just choose your favorite moments and they’ll join our live wedding gallery.</p>
+    <p>No account, no fuss.<br> Just choose your favorite moments and they’ll join our live wedding gallery.</p>
     <router-link to="/upload" class="button">Share a memory <span>↗</span></router-link>
     <router-link to="/gallery" class="text-link">Explore the gallery →</router-link>
   </section>
